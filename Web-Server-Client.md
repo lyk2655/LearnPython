@@ -1,4 +1,5 @@
 [简书:20180905:Python flask-sockets](https://www.jianshu.com/p/ad79148f4c11)
+
 今天来学习使用Python中的 flask 和 flask_sockets 来搭建一个简单的Server-Client 服务。
 
 ## Server 端
