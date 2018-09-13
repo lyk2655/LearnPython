@@ -471,18 +471,12 @@ It is possible to nest lists (create lists containing other lists), for example:
 'b'
 ```
 
-
-
-
---- TO-DO
-
-## 3.2\. First Steps Towards Programming[](https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming "Permalink to this headline")
+## 3.2\. First Steps Towards Programming 走向编程的第一步
 
 Of course, we can use Python for more complicated tasks than adding two and two together. For instance, we can write an initial sub-sequence of the [Fibonacci series](https://en.wikipedia.org/wiki/Fibonacci_number) as follows:
-
->>>
-
-<pre style="overflow: auto hidden; padding: 5px; background-color: rgb(238, 255, 204); color: rgb(51, 51, 51); line-height: 18.528px; border: 1px solid rgb(170, 204, 153); font-family: monospace, sans-serif; font-size: 15.44px; border-radius: 3px;">>>> # Fibonacci series:
+当然，我们可以用Python实现比2+2更复杂的任务。例如，我们可以写一个初始化斐波那契的子数列：
+```
+>>> # Fibonacci series:
 ... # the sum of two elements defines the next
 ... a, b = 0, 1
 >>> while a < 10:
@@ -496,42 +490,45 @@ Of course, we can use Python for more complicated tasks than adding two and two 
 3
 5
 8
-</pre>
+```
 
 This example introduces several new features.
+这个例子介绍了介个新的特征.
 
 *   The first line contains a *multiple assignment*: the variables `a` and `b` simultaneously get the new values 0 and 1\. On the last line this is used again, demonstrating that the expressions on the right-hand side are all evaluated first before any of the assignments take place. The right-hand side expressions are evaluated from the left to the right.
+*  第一行包含了*多项赋值*: 变量`a`和`b`同时获取新的值0和1.最后一行也用到了这个，说明右边的表达式都会在赋值操作之前执行。右边的表达式是从左到右计算。
 
 *   The [`while`](https://docs.python.org/3/reference/compound_stmts.html#while) loop executes as long as the condition (here: `a < 10`) remains true. In Python, like in C, any non-zero integer value is true; zero is false. The condition may also be a string or list value, in fact any sequence; anything with a non-zero length is true, empty sequences are false. The test used in the example is a simple comparison. The standard comparison operators are written the same as in C: `<` (less than), `>` (greater than), `==` (equal to), `<=` (less than or equal to), `>=`(greater than or equal to) and `!=` (not equal to).
+*  只要循环条件(这里是`a < 10`) 保持是真，`While`循环就会一直执行。在Python中，跟C类似，任何非0的整数值就是真；0是假。循环条件也可以是字符串或列表的值，事实上是任何序列都可以。任何值的长度不是0的就是真，空序列就是假。例子中使用的测试案例是一个简单的比较。标准的比较操作符跟C的写法一致:`<`小于，`>`大于，`==`等于，`<=`小于等于，`>=`大于等于以及`!=`不等于。
 
 *   The *body* of the loop is *indented*: indentation is Python’s way of grouping statements. At the interactive prompt, you have to type a tab or space(s) for each indented line. In practice you will prepare more complicated input for Python with a text editor; all decent text editors have an auto-indent facility. When a compound statement is entered interactively, it must be followed by a blank line to indicate completion (since the parser cannot guess when you have typed the last line). Note that each line within a basic block must be indented by the same amount.
+*  循环体是缩进的：缩进是Pytthon用来组织语句的方法。在交互模式中，你需要输入一个制表符或空格来缩进每一行。在实践中，你将会用文本编辑器来准备Python中更加复杂的输入。所有正常的文本编辑器都有自动缩进的功能。当交互式地输入一个组合语句时，必须跟着一个空行来表明结束(因为解析器不能猜到你什么时候输入的是最后一行)。注意一个基本块里的每一行都必须缩进一样的长度。
 
 *   The [`print()`](https://docs.python.org/3/library/functions.html#print "print") function writes the value of the argument(s) it is given. It differs from just writing the expression you want to write (as we did earlier in the calculator examples) in the way it handles multiple arguments, floating point quantities, and strings. Strings are printed without quotes, and a space is inserted between items, so you can format things nicely, like this:
+*  `print()`函数会打印提供给它的参数。它跟仅仅写出你想要的表达式(就像我们前面在计算器例子中做的)的方法不同，它可以处理多个参数，浮点数以及字符串。字符串会被打印且无引号，并且元素之间有一个空格，所有那你可以很好的格式来输出，就像这个：
 
-    >>>
+```Python
+>>> i = 256*256
+>>> print('The value of i is', i)
+The value of i is 65536
+```
 
-    <pre style="overflow: auto hidden; padding: 5px; background-color: rgb(238, 255, 204); color: rgb(51, 51, 51); line-height: 18.528px; border: 1px solid rgb(170, 204, 153); font-family: monospace, sans-serif; font-size: 15.44px; border-radius: 3px;">>>> i = 256*256
-    >>> print('The value of i is', i)
-    The value of i is 65536
-    </pre>
+The keyword argument *end* can be used to avoid the newline after the output, or end the output with a different string:
+关键字`end`可以用来避免输出最后的换行，用一个不同的字符串来结束输出：
 
-    The keyword argument *end* can be used to avoid the newline after the output, or end the output with a different string:
+```Python
+>>> a, b = 0, 1
+>>> while a < 1000:
+...     print(a, end=',')
+...     a, b = b, a+b
+...
+0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+```
 
-    >>>
 
-    <pre style="overflow: auto hidden; padding: 5px; background-color: rgb(238, 255, 204); color: rgb(51, 51, 51); line-height: 18.528px; border: 1px solid rgb(170, 204, 153); font-family: monospace, sans-serif; font-size: 15.44px; border-radius: 3px;">>>> a, b = 0, 1
-    >>> while a < 1000:
-    ...     print(a, end=',')
-    ...     a, b = b, a+b
-    ...
-    0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
-    </pre>
+Footnotes  注脚
 
-Footnotes
-
-<colgroup><col class="label"><col></colgroup>
 | [[1]](https://docs.python.org/3/tutorial/introduction.html#id1) | Since `**` has higher precedence than `-`, `-3**2` will be interpreted as `-(3**2)`and thus result in `-9`. To avoid this and get `9`, you can use `(-3)**2`. |
 
-<colgroup><col class="label"><col></colgroup>
 | [[2]](https://docs.python.org/3/tutorial/introduction.html#id2) | Unlike other languages, special characters such as `\n` have the same meaning with both single (`'...'`) and double (`"..."`) quotes. The only difference between the two is that within single quotes you don’t need to escape `"` (but you have to escape `\'`) and vice versa. |
 
